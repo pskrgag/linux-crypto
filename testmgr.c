@@ -29,10 +29,17 @@
 #include <linux/slab.h>
 #include <linux/string.h>
 #include <linux/version.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 12, 0)
+#include <crypto/internal/cipher.h>
+#endif
 #if 0
 #include <crypto/aead.h>
 #include <crypto/akcipher.h>
 #include <crypto/kpp.h>
+#endif
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 12, 0)
+MODULE_IMPORT_NS(CRYPTO_INTERNAL);
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)
